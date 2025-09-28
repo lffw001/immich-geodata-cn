@@ -117,8 +117,8 @@ def translate_cities500():
                     if not location["admin_2"]:
                         continue
                     location["admin_4"] = convert(location["admin_3"], "zh-cn")
-                    location["admin_3"] = convert(location["admin_2"]， "zh-cn")
-                    location["admin_2"] = convert(location["admin_1"]， "zh-cn")
+                    location["admin_3"] = convert(location["admin_2"], "zh-cn")
+                    location["admin_2"] = convert(location["admin_1"], "zh-cn")
                     location["admin_1"] = "台湾省"
                     res = cn_pattern.format(**location)
                 else:

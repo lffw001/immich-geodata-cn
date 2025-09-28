@@ -99,7 +99,7 @@ def translate_cities500():
             translated_name = None
 
             if (
-                country_code 在 geodata
+                country_code in geodata
                 and (longitude, latitude) in geodata[country_code]
             ):
                 location = geodata[country_code][(longitude, latitude)]
@@ -107,13 +107,13 @@ def translate_cities500():
                     if not location["admin_2"] or location["admin_2"] == "中华人民共和国":
                         continue
                     if (
-                        "admin_2" 在 cn_pattern
-                        和 "admin_3" in cn_pattern
+                        "admin_2" in cn_pattern
+                        and "admin_3" in cn_pattern
                         and location["admin_2"] == location["admin_3"]
                     ):
                         location["admin_2"] = location["admin_1"]
                     res = cn_pattern.format(**location)
-                elif country_code 在 ["TW"]:
+                elif country_code in ["TW"]:
                     if not location["admin_2"]:
                         continue
                     location["admin_4"] = convert(location["admin_3"], "zh-cn")

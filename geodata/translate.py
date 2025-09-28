@@ -78,7 +78,7 @@ def translate_cities500():
         logger.error(f"输入文件 {input_file} 不存在")
         return
 
-    output_file = os.path.join(args.output, "cities500.txt")
+    output_file = os.path.join(args.output， "cities500.txt")
     ensure_folder_exists(output_file)
 
     with open(input_file, "r", encoding="utf-8") as infile, open(
@@ -99,7 +99,7 @@ def translate_cities500():
             translated_name = None
 
             if (
-                country_code in geodata
+                country_code 在 geodata
                 and (longitude, latitude) in geodata[country_code]
             ):
                 location = geodata[country_code][(longitude, latitude)]
@@ -107,22 +107,22 @@ def translate_cities500():
                     if not location["admin_2"] or location["admin_2"] == "中华人民共和国":
                         continue
                     if (
-                        "admin_2" in cn_pattern
-                        and "admin_3" in cn_pattern
+                        "admin_2" 在 cn_pattern
+                        和 "admin_3" in cn_pattern
                         and location["admin_2"] == location["admin_3"]
                     ):
                         location["admin_2"] = location["admin_1"]
                     res = cn_pattern.format(**location)
-                elif country_code in ["TW"]:
+                elif country_code 在 ["TW"]:
                     if not location["admin_2"]:
                         continue
                     location["admin_4"] = convert(location["admin_3"], "zh-cn")
-                    location["admin_3"] = convert(location["admin_2"], "zh-cn")
-                    location["admin_2"] = convert(location["admin_1"], "zh-cn")
+                    location["admin_3"] = convert(location["admin_2"]， "zh-cn")
+                    location["admin_2"] = convert(location["admin_1"]， "zh-cn")
                     location["admin_1"] = "台湾省"
                     res = cn_pattern.format(**location)
                 else:
-                    res = location["admin_2"]
+                    res = location["admin_4"]
                     res = convert(res, "zh-cn")
 
                     # 处理同时存在简繁名字的场景，例如 	东京都/東京都

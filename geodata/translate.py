@@ -78,7 +78,7 @@ def translate_cities500():
         logger.error(f"输入文件 {input_file} 不存在")
         return
 
-    output_file = os.path.join(args.output， "cities500.txt")
+    output_file = os.path.join(args.output, "cities500.txt")
     ensure_folder_exists(output_file)
 
     with open(input_file, "r", encoding="utf-8") as infile, open(
